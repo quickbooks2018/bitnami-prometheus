@@ -1,6 +1,6 @@
 # Bitnami Prometheus
 
-# Helm Chart for Prometheus
+# Helm Chart for Bitnami Prometheus
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -12,3 +12,17 @@ helm show values bitnami/prometheus --version 1.0.6 > prometheus-values.yaml
 helm -n monitoring upgrade --install prometheus bitnami/prometheus --create-namespace --version 1.0.6 -f prometheus-values.yaml --wait
 helm -n monitoring upgrade --install prometheus bitnami/prometheus --create-namespace --version 1.0.6 --wait
 ```
+
+# Helm Chart for Bitnami Grafana
+
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm repo ls
+helm search repo bitnami/grafana --versions
+helm show values bitnami/grafana --version 10.0.9
+helm show values bitnami/grafana --version 10.0.9 > grafana-values.yaml
+helm -n monitoring upgrade --install grafana bitnami/grafana --create-namespace --version 10.0.9 -f grafana-values.yaml --wait
+helm -n monitoring upgrade --install grafana bitnami/grafana --create-namespace --version 10.0.9 --wait
+```
+
