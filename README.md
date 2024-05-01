@@ -6,11 +6,11 @@
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
 helm repo ls
-helm search repo bitnami/prometheus --versions
-helm show values bitnami/prometheus --version 1.0.6
-helm show values bitnami/prometheus --version 1.0.6 > prometheus-values.yaml
-helm -n monitoring upgrade --install prometheus bitnami/prometheus --create-namespace --version 1.0.6 -f prometheus-values.yaml --wait
-helm -n monitoring upgrade --install prometheus bitnami/prometheus --create-namespace --version 1.0.6 --wait
+helm search repo bitnami/kube-prometheus --versions
+helm show values bitnami/kube-prometheus --version 9.0.5
+helm show values bitnami/kube-prometheus --version 9.0.5 > prometheus-values.yaml
+helm -n monitoring upgrade --install prometheus bitnami/kube-prometheus --create-namespace --version 9.0.5 -f prometheus-values.yaml --wait
+helm -n monitoring upgrade --install prometheus bitnami/kube-prometheus --create-namespace --version 9.0.5 --wait
 ```
 
 # Helm Chart for Bitnami Grafana
