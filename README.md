@@ -11,6 +11,24 @@ helm show values bitnami/kube-prometheus --version 9.0.5
 helm show values bitnami/kube-prometheus --version 9.0.5 > prometheus-values.yaml
 helm -n monitoring upgrade --install prometheus bitnami/kube-prometheus --create-namespace --version 9.0.5 -f prometheus-values.yaml --wait
 helm -n monitoring upgrade --install prometheus bitnami/kube-prometheus --create-namespace --version 9.0.5 --wait
+
+git clone https://github.com/GoogleCloudPlatform/bank-of-anthos.git
+cd bank-of-anthos/
+
+helm -n monitoring upgrade --install prometheus bitnami/kube-prometheus --create-namespace --version 9.0.5 --values extras/prometheus/oss/values.yaml --wait
+```
+
+- Configure Slack (Sample App by Google)
+```bash
+kubectl -n monitoring create secret generic alertmanager-slack-webhook --from-literal webhookURL=SLACK_WEBHOOK_URL
+
+kubectl  -n monitoring kubectl apply -f extras/prometheus/oss/alertmanagerconfig.yaml
+```
+
+- Configure Prometheus
+```bash
+kubectl -n monitoring apply -f extras/prometheus/oss/probes.yaml
+kubectl -n monitoring apply -f extras/prometheus/oss/rules.yaml
 ```
 
 # Helm Chart for Bitnami Grafana
