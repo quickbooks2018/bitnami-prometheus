@@ -1,5 +1,7 @@
 # Bitnami Prometheus
 
+- https://www.youtube.com/watch?v=LUPNpQXRKB4&t=3s
+
 # Helm Chart for Bitnami Prometheus
 
 ```bash
