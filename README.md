@@ -51,28 +51,4 @@ helm -n monitoring upgrade --install grafana bitnami/grafana --create-namespace 
 https://api.slack.com/apps
 ```
 
-- Steps to Install Addtional Scrape Configurations
-
-- Step 1
-```bash
-k apply -f prometheus-additional-scrape-configs.yaml
-```
-
-- Step 2
-```bash
-helm -n monitoring upgrade --install prometheus bitnami/kube-prometheus --create-namespace --version 9.0.5 -f prometheus-values.yaml --wait
-```
-
-- Step 3
-```bash
-k apply -f additional-scrape-configs.yaml
-k apply -f custom-rules.yaml
-```
-
-- Step 4
-```bash
-kubectl delete pod -l app.kubernetes.io/name=prometheus -n monitoring
-kubectl delete pod -l app.kubernetes.io/name=alertmanager -n monitoring
-```
-
 - https://github.com/bitnami/charts/blob/main/bitnami/kube-prometheus/values.yaml
